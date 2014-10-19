@@ -1,6 +1,6 @@
 libs = ['/home/point/point/lib']
 
-cache_socket = 'unix:///var/run/redis/cache.sock'
+cache_socket = 'tcp://127.0.0.1:16380'
 storage_socket = 'unix:///var/run/redis/storage.sock'
 pubsub_socket = 'unix:///var/run/redis/pubsub.sock'
 queue_socket = 'unix:///var/run/redis/queue.sock'
