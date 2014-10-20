@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/point/point/stat
+cd /home/point/stat
 
 ../venv/bin/python collect.py
 

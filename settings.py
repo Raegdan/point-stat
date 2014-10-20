@@ -1,4 +1,4 @@
-libs = ['/home/point/point/lib']
+libs = ['/home/point/core/lib']
 
 cache_socket = 'tcp://127.0.0.1:16380'
 storage_socket = 'unix:///var/run/redis/storage.sock'
@@ -23,8 +23,8 @@ domain = 'point.im'
 
 period = 30
 
-stat_path = '/home/point/point/www/static/files/stat'
-images_path = '/home/point/point/www/static/img/stat'
+stat_path = '/home/point/www/static/files/stat'
+images_path = '/home/point/www/static/img/stat'
 
 lang = 'en'
 timezone = 'Europe/Moscow'
