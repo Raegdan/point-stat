@@ -120,14 +120,24 @@ def blacklisted():
     json.dump(list(res), fd)
     fd.close()
 
+def blacklisters():
+    res = db.fetchall("SELECT u.login, count(b.to_user_id) cnt "
+                      "FROM users.blacklist b "
+                      "JOIN users.logins u ON b.user_id=u.id " 
+                      "GROUP BY u.login ORDER BY cnt DESC LIMIT 20;")
+    fd = open(os.path.join(settings.stat_path, "blacklisters.json"), "w")
+    json.dump(list(res), fd)
+    fd.close()
+
 if __name__ == "__main__":
-    users()
-    posts()
-    comments()
-    posters_weekly()
-    commenters_weekly()
-    most_commented_weekly()
-    posts_avg()
-    comments_avg()
-    blacklisted()
+    #users()
+    #posts()
+    #comments()
+    #posters_weekly()
+    #commenters_weekly()
+    #most_commented_weekly()
+    #posts_avg()
+    #comments_avg()
+    #blacklisted()
+    blacklisters()
 
