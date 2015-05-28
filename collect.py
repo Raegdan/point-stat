@@ -50,6 +50,17 @@ def comments():
     json.dump(map(lambda o: [o[0].strftime("%Y-%m-%d"), o[1]], res), fd)
     fd.close()
 
+def comments_count():
+    res = db.fetchall("SELECT u.login as author, count(c.comment_id) as cnt "
+            "FROM posts.comments c "
+            "JOIN posts.posts p ON c.post_id=p.id AND p.private=false "
+            "JOIN users.logins u ON u.id=p.author "
+            "group by c.post_id, u.login "
+            "order by cnt desc  LIMIT 20;")
+    fd = open(os.path.join(settings.stat_path, "comments_count.json"), "w")
+    json.dump(map(lambda o: [o[0].strftime("%Y-%m-%d"), o[1]], res), fd)
+    fd.close()
+
 def posters_weekly():
     res = db.fetchall("SELECT u.login, count(p.id) cnt "
                       "FROM posts.posts p "
